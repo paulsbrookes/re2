@@ -8,7 +8,7 @@ sync_workspace() {
   checkout="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
   WORKSPACE="${HARD_OSS_WORKSPACE_ROOT:-/var/tmp/hard-oss-workspaces}/re2"
   mkdir -p "${WORKSPACE}"
-  rsync -a --delete \
+  rsync -rlpgoD --checksum --delete \
     --exclude='/build/' \
     --exclude='/.git/' \
     --exclude='/artemis_results.json' \
